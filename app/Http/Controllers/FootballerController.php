@@ -25,7 +25,7 @@ class FootballerController extends Controller
      */
     public function create()
     {
-
+        return view("footballers.create");
     }
 
     /**
@@ -34,9 +34,21 @@ class FootballerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Footballer $footballer)
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name" => "required|min:3|max:255",
+            "clubName" => "required|max:255",
+            "age" => "required|numeric",
+            "matchCount" => "required|numeric",
+            "goalCount" => "required|numeric",
+            "assistCount" => "required|numeric",
+            "slug" => "required|unique.footballers,slug",
+        ]);
+
+
+
+
     }
 
     /**
