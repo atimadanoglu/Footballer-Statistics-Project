@@ -14,3 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::resource("footballers", FootballerController::class);
+Route::get("/", [FootballerController::class, "index"]);

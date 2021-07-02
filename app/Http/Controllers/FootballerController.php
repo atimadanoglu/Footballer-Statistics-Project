@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Footballer;
 
 class FootballerController extends Controller
 {
@@ -13,7 +14,8 @@ class FootballerController extends Controller
      */
     public function index()
     {
-        return view("pages.main");
+        $footballers = Footballer::all();
+        return view("footballers.index", compact("footballers"));
     }
 
     /**
@@ -32,7 +34,7 @@ class FootballerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Footballer $footballer)
     {
         //
     }
@@ -40,21 +42,21 @@ class FootballerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Footballer $footballer
+     *
      */
-    public function show($id)
+    public function show(Footballer $footballer)
     {
-        //
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Footballer $footballer
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Footballer $footballer)
     {
         //
     }
@@ -63,10 +65,10 @@ class FootballerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Footballer $footballer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Footballer $footballer)
     {
         //
     }
@@ -74,10 +76,10 @@ class FootballerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Footballer $footballer
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Footballer $footballer)
     {
         //
     }

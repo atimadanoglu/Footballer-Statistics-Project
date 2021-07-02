@@ -1,6 +1,6 @@
 @extends("layouts.default")
 
-@section("title", "Footballer Statistics")
+@section("title", "Footballer")
 
 @section("content")
 
