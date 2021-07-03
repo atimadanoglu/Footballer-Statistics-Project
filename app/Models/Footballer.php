@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Footballer extends Model
 {
     use HasFactory;
+
+    /*
+     *  @return string
+     * */
+    public function getRouteKeyName(): string
+    {
+        return "slug";
+    }
+
+
 }

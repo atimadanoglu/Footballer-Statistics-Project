@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Footballer;
+use Illuminate\Support\Str;
 
 class FootballerController extends Controller
 {
@@ -32,7 +33,7 @@ class FootballerController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     *
      */
     public function store(Request $request)
     {
@@ -46,8 +47,18 @@ class FootballerController extends Controller
             "slug" => "required|unique.footballers,slug",
         ]);
 
+        $footballer = new Footballer();
+        $footballer->name = $request->input("name");
+        $footballer->clubName = $request->input("clubName");
+        $footballer->age = $request->input("age");
+        $footballer->matchCount = $request->input("matchCount");
+        $footballer->goalCount = $request->input("goalCount");
+        $footballer->assistCount = $request->input("assistCount");
+        $footballer->slug = Str::slug($footballer->name);
 
+        $footballer->save();
 
+        return redirect()->back();
 
     }
 
@@ -59,7 +70,7 @@ class FootballerController extends Controller
      */
     public function show(Footballer $footballer)
     {
-
+        return view("footballers.show", ["footballer" => $footballer]);
     }
 
     /**
