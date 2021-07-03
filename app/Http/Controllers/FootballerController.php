@@ -120,10 +120,11 @@ class FootballerController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  Footballer $footballer
-     * @return \Illuminate\Http\Response
+     *
      */
     public function destroy(Footballer $footballer)
     {
-        //
+         $footballer->delete();
+         return redirect()->route("footballers.index");
     }
 }
