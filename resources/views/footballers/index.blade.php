@@ -26,9 +26,9 @@
                 <td>{{$footballer->goalCount}}</td>
                 <td>{{$footballer->assistCount}}</td>
                 <td>
-                    <a class="btn btn-small btn-info" href="#">Show this footballer</a><br>
-                    <a class="btn btn-small btn-warning" href="#">Update this footballer</a><br>
-                    <form action="#" method="POST">
+                    <a class="btn btn-small btn-info" href="{{ route("footballers.show", ["footballer" => $footballer]) }}">Show this footballer</a><br>
+                    <a class="btn btn-small btn-warning" href="{{ route("footballers.edit", ["footballer" => $footballer]) }}">Update this footballer</a><br>
+                    <form action="{{ route("footballers.destroy", ["footballer" => $footballer]) }}" method="POST">
                         @csrf
                         @method("DELETE")
                         <button class="btn btn-danger" type="submit">Delete this footballer</button>

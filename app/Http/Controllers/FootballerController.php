@@ -77,11 +77,11 @@ class FootballerController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param Footballer $footballer
-     * @return \Illuminate\Http\Response
+     *
      */
     public function edit(Footballer $footballer)
     {
-        //
+        return view("footballers.update", compact("footballer"));
     }
 
     /**
@@ -89,11 +89,31 @@ class FootballerController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  Footballer $footballer
-     * @return \Illuminate\Http\Response
+     *
      */
     public function update(Request $request, Footballer $footballer)
     {
-        //
+        $request->validate([
+            "name" => "required|min:3|max:255",
+            "clubName" => "required|max:255",
+            "age" => "required|numeric",
+            "matchCount" => "required|numeric",
+            "goalCount" => "required|numeric",
+            "assistCount" => "required|numeric",
+            "slug" => "unique.footballers,slug",
+        ]);
+
+        $footballer->name = $request->input("name");
+        $footballer->clubName = $request->input("clubName");
+        $footballer->age = $request->input("age");
+        $footballer->matchCount = $request->input("matchCount");
+        $footballer->goalCount = $request->input("goalCount");
+        $footballer->assistCount = $request->input("assistCount");
+        $footballer->slug = Str::slug($footballer->name);
+
+        $footballer->save();
+
+        return redirect()->route("footballers.index");
     }
 
     /**
