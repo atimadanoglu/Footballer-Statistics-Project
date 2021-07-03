@@ -24,10 +24,10 @@
         <div class="collapse navbar-collapse justify-content-lg-end" id="navbarText">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="">{{__("Footballers List")}}</a>
+                    <a class="nav-link" href="{{ route("footballers.index") }}">{{__("Footballers List")}}</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="">{{__("New Footballer")}}</a>
+                    <a class="nav-link" href="{{ route("footballers.create") }}">{{__("New Footballer")}}</a>
                 </li>
             </ul>
         </div>

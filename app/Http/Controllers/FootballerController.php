@@ -44,7 +44,7 @@ class FootballerController extends Controller
             "matchCount" => "required|numeric",
             "goalCount" => "required|numeric",
             "assistCount" => "required|numeric",
-            "slug" => "required|unique.footballers,slug",
+            "slug" => "unique.footballers,slug",
         ]);
 
         $footballer = new Footballer();
@@ -58,7 +58,7 @@ class FootballerController extends Controller
 
         $footballer->save();
 
-        return redirect()->back();
+        return redirect()->route("footballers.index");
 
     }
 

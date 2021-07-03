@@ -22,7 +22,7 @@ class CreateFootballersTable extends Migration
             $table->integer("matchCount");
             $table->integer("goalCount");
             $table->integer("assistCount");
-            $table->timestamp("added_at")->nullable();
+            $table->timestamps();
         });
     }
 
